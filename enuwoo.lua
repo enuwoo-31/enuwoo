@@ -38,7 +38,7 @@ local Window = Rayfield:CreateWindow({
 
 local dhlock = loadstring(game:HttpGet("https://raw.githubusercontent.com/enuwoo-31/DH-Lua-Lock/e526fda932d30406cec380713bec21245536ae8c/Main.lua"))()
 local Chams = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stratxgy/Roblox-Chams-Highlight/refs/heads/main/Highlight.lua"))()
-
+local targethud = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stratxgy/Lua-TargetHud/refs/heads/main/targethud.lua"))()
 
 
 
@@ -102,16 +102,6 @@ local Slider = AimbotTab:CreateSlider({
 })
 
 
-local ColorPicker = AimbotTab:CreateColorPicker({
-    Name = "Fov color",
-    Color = Color3.fromRGB(255,255,255),
-    Flag = "ColorPicker1", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-    Callback = function(Value)
-     getgenv().dhlock.fovcolorlocked = Color3.new(1, 0, 0)
-    end
-})
-
-
 local Keybind = AimbotTab:CreateKeybind({
    Name = "Aim bind",
    CurrentKeybind = "MB2",
@@ -150,6 +140,17 @@ local Slider = VisualTab:CreateSlider({
    end,
 })
 
+local Section = VisualTab:CreateSection("targethud")
+
+
+local Toggle = VisualTab:CreateToggle({
+   Name = "Target hud",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+     getgenv().targethud.enabled = Value
+   end,
+})
 
 
 Rayfield:Notify({
